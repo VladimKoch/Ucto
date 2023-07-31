@@ -1,0 +1,249 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+  
+  }
+  
+  
+  
+
+
+
+/* -------------------------------Nav Container----------------------------- */
+.container{
+display: flex;
+background: linear-gradient(90deg,rgb(84, 98, 255)0%,rgb(181, 84, 250)100%); 
+height: 80px;
+flex-direction: row;
+width: 100%;  
+justify-content: space-around;
+box-shadow: 0 0 10px rgb(118, 118, 118);
+flex-wrap: wrap;
+margin-top: 40px;
+}
+.ikonaMenu{
+display:none;
+}
+.continer > div, ul{
+flex:0.6
+}
+
+.img {
+height: 80px;
+text-align: center;
+}
+
+/* Rámeček s tlačítkama */
+.topbuttons{
+  display: flex;
+  height: 80px;
+  width:900px;
+  justify-content: space-around;
+  
+  
+}
+
+
+
+
+
+
+/* Tlačítka panel */
+
+nav ul li  {
+  
+  list-style-type: none;
+  width:110px;
+  display: flex;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  align-items: center;
+
+}
+
+/* Buttons style */
+
+
+
+.btn span{
+font-size: 20px;
+color: rgb(255, 255, 255) ;
+font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+
+.btn{
+height: 35px;
+width: 120px;
+border-radius: 10px;
+outline: none;
+border: none;
+cursor: pointer;
+transition: 500ms;
+transition-property: box-shadow , background-color, color;
+font-size: 20px;
+font-family: 'Times New Roman', Times, serif;
+color:white;
+background: inherit;
+}
+
+
+.btn:active{
+animation: scale 500ms;
+}
+
+@keyframes scale{
+from{scale: 0.9}
+to{scale:1}
+}
+
+.btn:hover{
+
+
+box-shadow: 1px 0px 5px 0  #f8f8fa , 1px +0px 5px 0  #f0ecf4,
+            1px 0px 5px 0  #4823ff , 1px +0px 5px 0  #a32df7,
+            0px 1px 10px 0  #4823ff , 0px 1px 10px 0  #a32df7,
+            0px 0px 10px 0  #ddf3fa , 0px 0px 10px 0  #e3faff,
+            0px 1px 10px 0  #ddf3fa , 0px 1px 10px 0  #e3faff,
+            0px 1px 10px 0  #4823ff , 0px 1px 10px 0  #a32df7;
+
+background-color: white;
+color:#6b26d9;
+          }
+
+
+/*  Container Poradna na konci NAV */
+
+.containerPoradna{
+ width: 170px;
+  height: 80px;
+  color: white;
+  margin-top: 7px;
+  text-align: center;  
+  
+}
+
+
+/* Jednotlivé položky poradny  */
+
+.poradna1{
+background: linear-gradient(90deg,rgb(40, 54, 218)0%,rgb(163, 45, 247)100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+font-size: 20px;
+text-align: center;
+}
+
+
+
+
+.marciFOTO{
+margin-top: 15px;
+height: 50px;
+}
+
+
+.secretary{
+margin-top: 15px;
+height: 50px;
+}
+
+.foto{
+margin-top: 15px;
+height: 50px;
+
+}
+
+.ikohamburger{
+margin-top: 15px;
+height: 50px;
+
+}
+
+
+
+
+
+@media screen and (max-width: 520px){
+    .topbuttons{
+      display: none; 
+    
+    
+    
+    }
+
+
+    .secretary{
+        display: none;
+    }
+
+    .foto{
+        margin-top: 15px;
+        height: 30px;
+        
+        }
+        
+        .container1{
+        
+        margin-top: 50px;
+        
+        }
+        
+        .container3{
+        height: 1200px;
+        
+        }
+        
+        .ikonaMenu{
+        display:block;
+        transition: 500ms;
+        
+        }
+        
+
+        .containerPoradna{
+            display: none;
+        }
+
+        
+        .ikonaMenu:hover{
+        scale: 1.1;
+        cursor: pointer;
+        }
+        
+        .ikonaMenu:active{
+        will-change: url("hamburgermenu1.png");
+        }
+        
+     
+    }
+     
+        
+  
+  
+ 
+        
+ 
+        
+    
+
+   
+        
+  
+        
+  
+        
+
+        
+        
+
+
+
+
+
