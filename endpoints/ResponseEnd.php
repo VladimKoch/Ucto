@@ -1,13 +1,17 @@
 <?php
 
-require_once(__DIR__."/../dal/ResponseRepository.php");
+
+require_once("./auth/signer.php");
+require_once("./index.php");
 
 
-if(isset($_POST["operation_type"]))
-{
-    $responseRepo = new ResponseRepository($connection);
-    if($_POST["operation_type"] == "create")
-    {
+
+//---------Check if is set Submit----------\\
+if(isset($_POST["submit"]))
+
+{   //Use Signer Class
+    $responseRepo = new Signer($connection);
+        //---------Check if is set POSTs----------\\
         if(isset($_POST["Username_post"]) &&
             isset($_POST["Email"]) &&
             isset($_POST["Phone"]) &&
@@ -20,26 +24,57 @@ if(isset($_POST["operation_type"]))
             isset($_POST["Interest"]) &&
             isset($_POST["TaxPay"]) &&
             isset($_POST["Info"]))
-        {
-            $input = array(
-                            "Username_post" => $_POST["Username_post"],
-                            "Email" => $_POST["Email"],
-                            "Phone" => $_POST["Phone"],
-                            "Annual_turnover" => $_POST["Annual_turnover"],
-                            "Property_cards" => $_POST["Property_cards"],
-                            "Employe" => $_POST["Employe"],
-                            "Documents" => $_POST["Documents"],
-                            "Legal_form" => $_POST["Legal_form"],
-                            "Business" => $_POST["Business"],
-                            "Interest" => $_POST["Interest"],
-                            "TaxPay" => $_POST["TaxPay"],
-                            "Informace" => $_POST["Info"]);
-            echo $responseRepo -> create($input);
 
+        
+        {
+                            //-------Take Posts and sanitazing data------\\
+                            $full_name = sanitizeData($_POST["Username_post"]);
+                            $email = sanitizeData($_POST["Email"]);
+                            $phone_number = sanitizeData($_POST["Phone"]);
+                            $annual_turnover = sanitizeData($_POST["Annual_turnover"]);
+                            $property_cards = sanitizeData($_POST["Property_cards"]);
+                            $employe = sanitizeData($_POST["Employe"]);
+                            $documents = sanitizeData($_POST["Documents"]);
+                            $legal_form = sanitizeData($_POST["Legal_form"]);
+                            $scope_of_business = sanitizeData($_POST["Business"]);
+                            $interest = sanitizeData($_POST["Interest"]);
+                            $tax_pay = sanitizeData($_POST["TaxPay"]);
+                            $info = sanitizeData($_POST["Info"]);
+
+            //-------------Insert into the database---------------\\
+                $insert = $responseRepo -> send_responses($full_name,
+                                                $email,
+                                                $phone_number,
+                                                $annual_turnover,
+                                                $property_cards,$employe,
+                                                $documents,$legal_form,
+                                                $scope_of_business,
+                                                $interest,$tax_pay,
+                                                $info);
+
+            // if(!$insert){
+            //     throw new Exception('Odpovědi nebyly vloženy do databáze');
+            // }
+                                              
+    
         
         }
     
-        }
     }
+
+
+/**
+ * Sanitaze input Function
+ */
+function sanitizeData($Data)
+{
+    $Data = trim($Data);
+    $Data = stripslashes($Data);
+    $Data = htmlspecialchars($Data);
+
+    return $Data;
+}
+
+
 
 ?>

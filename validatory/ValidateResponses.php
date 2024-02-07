@@ -4,27 +4,27 @@ $username = "";
 $email = "";
 $phone = "";
 $obrat = "";
-$karty = "";
-$zamestnanci = "";
+$karts = "";
+$employes = "";
 $doklady = "";
 $forma = "";
 $podnikani = "";
 $zajem = "";
 $DPH = "";
 
-if($_SERVER["REEQUEST_METHOD"] === "POST"){
+if($_SERVER["REQUEST_METHOD"] === "POST"){
 
-    $username = validateUsername();
-    $email = validateEmail();
-    $phone = validatePhone();
-    $obrat = validateObrat();
-    $karty = validateKarty();
-    $zamestnanci = validateZamestnanci();
-    $doklady = validateDoklady();
-    $forma = validateForma();
-    $podnikani = validatePodnikani();
-    $zajem = validateZajem();
-    $DPH = validateDPH();
+    $username = validateUsername($username);
+    $email = validateEmail($email);
+    $phone = validatePhone($phone);
+    $obrat = validateObrat($obrat);
+    $karts = validateKarty($karts);
+    $employes = validateZamestnanci($employes);
+    $doklady = validateDoklady($doklady);
+    $forma = validateForma($forma);
+    $podnikani = validatePodnikani($podnikani);
+    $zajem = validateZajem($zajem);
+    $DPH = validateDPH($DPH);
 
 }
 
@@ -34,7 +34,7 @@ function validateUsername($data){
 }
 
 
-function vvalidateEmail($data){
+function validateEmail($data){
     $data = validateInput($data);
 }
 

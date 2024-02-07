@@ -14,6 +14,7 @@ class Signer implements ISigner
     private const TABLE_NAME = "users";
     private const TABLE_NAME_RESPONSES = "responses";
     private const TABLE_NAME_COMMENTS = "comments";
+    private const TABLE_NAME_TEST = "test";
 
     public function __construct(mysqli $conn)
     {
@@ -37,14 +38,16 @@ class Signer implements ISigner
 
 
 
-    public function send_responses(string $Username, string $Email, string $Phone,string $Turnover,string $Property,string $Employe,string $Documents,string $LegalForm,string $Business, string $Interest,string $TaxPay, string $Info) : void
+    public function send_responses(string $full_name, string $email, string $phone_number,int $annual_turnover,int $property_cards,int $employe,int $documents,string $legal_form,string $scope_of_business, string $interest,string $tax_pay, string $inf) : void
     {
-        $sql = "INSERT INTO ".self::TABLE_NAME_RESPONSES."(full_name,email,phone_number,annual_turnover,property_cards,employe,documents,legal_form,scope_of_business,interest,tax_pay,inf) VALUES ('$Username','$Email','$Phone','$Turnover','$Property','$Employe','$Documents','$LegalForm','$Business','$Interest','$TaxPay','$Info')";
-        if(!$this -> connection -> query($sql))
-        {
-            throw new Exception("Pridani nového uživatele selhalo");
-        }
-    return;
+        $sql = "INSERT INTO ".self::TABLE_NAME_RESPONSES."(full_name,email,phone_number,annual_turnover,property_cards,employe,documents,legal_form,scope_of_business,interest,tax_pay,inf) VALUES ('$full_name','$email','$phone_number',$annual_turnover,$property_cards,$employe,$documents,'$legal_form','$scope_of_business','$interest','$tax_pay','$inf')";
+        $execute = $this -> connection -> query($sql);
+
+        // if(!$execute)
+        // {
+        //     throw new Exception("poslání odpovědí selhalo");
+        // }
+    
     }
 
     public function send_comments(string $Comments): void
@@ -90,9 +93,16 @@ public function __destruct()
     $this -> connection -> close();
 }
 
+public function test(string $text1, string $text2) : void
+{
+$sql = "INSERT INTO " .self::TABLE_NAME_TEST."(text1 , text2)VALUES('$text1','$text2')";
+$this -> connection -> query($sql);
+}
 
 
 }
+
+
 
 
 

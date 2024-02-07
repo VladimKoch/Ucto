@@ -19,7 +19,7 @@ class Repository implements IRepository
         }
     }
 
-    public function create(array $fieldsAndValues) : int
+    public function insert(array $fieldsAndValues) : int
     {
         $sql = "INSERT INTO ".$this -> tableName."(".implode(',',array_keys($fieldsAndValues)).")VALUES('".implode('\',\'', array_values($fieldsAndValues))."');";
         $sql = self::prepare_query($sql);

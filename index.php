@@ -2,12 +2,15 @@
 
 // echo "Ahoj";
 
-require_once(__DIR__."./db/db.php");
-require_once(__DIR__."./dal/CommentRepository.php");
-require_once(__DIR__."/model/Comment.php");
-require_once(__DIR__."/dal/UserRepository.php");
-require_once(__DIR__."/auth/signer.php");
-require_once(__DIR__."/auth/check_cookie.php");
+require_once(__DIR__."../db/db.php");
+require_once(__DIR__."../dal/CommentRepository.php");
+require_once(__DIR__."../model/Comment.php");
+require_once(__DIR__."../dal/UserRepository.php");
+require_once(__DIR__."../auth/signer.php");
+require_once(__DIR__."../auth/check_cookie.php");
+
+include("./common/nav.php");
+include("./endpoints/ResponseEnd.php");
 
 
 
@@ -31,54 +34,6 @@ require_once(__DIR__."/auth/check_cookie.php");
 
 
 
-
-
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styly.css">
-
- 
-    
-    <title>MSdaně</title>
-</head>
-<body>
-
-    <header id="domu">
-        <div class="pozadi"></div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-
-            <div class="img"><img src="./img/MarciSRO.svg" class="marciFOTO" alt=""></div>
-            
-            
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
-                <li><a href="#domu"><button class="btn" on>Domů</button></a></li>
-                <li><a href="#cenik"><button class="btn">Služby</button></a></li>
-                <li><a href="#omne"><button class="btn">O mně</button></a></li>
-                <li><a href="#registrace"><button class="btn">Registrace</button></a></li>
-                <li><a href="#kontakt"><button class="btn">Kontakt</button></a></li>
-            </ul>
-
-            <div class="menu"><img src="./img/home.png" alt="" class="secretary"></div>
-
-            <div class="containerPoradna">
-                <div class="poradna1"><h4>Poradna zdarma</h4></div>
-                <div class="poradna2"><h4>7305558888</h4></div>
-                <div class="poradna3"><h4>ucto@seznam.cz</h4></div>
-            </div>
-            <div class="ikonaMenu"><img src="./img/hamburgermenu.png" class="ikohamburger" alt=""></a></div>
-        </nav>
-
-        <div class="building"></div>
-    
-
-    </header>
-
-
     <main>
 
     <div class="login">
@@ -87,7 +42,7 @@ require_once(__DIR__."/auth/check_cookie.php");
         <span ><a href="deleteform.php" class="loginOdkaz">Smazat účet</a></span>
         
     </div>
-<div class="uzivatel"><span> <p>Uživatel <?php echo $_COOKIE["email"]?></p></span></div>
+<div class="uzivatel"><span> <p> </p></span></div>
         
         <div class="container1">
               
@@ -161,11 +116,13 @@ require_once(__DIR__."/auth/check_cookie.php");
 
 
 
+
+
         <div class="containerSize" id="registrace">
         <div class="container5">
         
             <div class="title">Dejte mi vědět o svých potřebách.</div>
-                    <form action="./auth/check_responses.php" method="POST" class="form-border" id="form">
+                    <form action="" method="POST" class="form-border" id="form">
                         <div class="user-details">
 
                             <div class="input-box">
@@ -189,13 +146,13 @@ require_once(__DIR__."/auth/check_cookie.php");
 
 
                             <div class="input-box">
-                                <label for="karty" class="details">Hmotný i nehmo. majetek:</label>
-                                <input type="text" id="karty" placeholder="Počet Inv. karet" name="Property_cards" required></div>
+                                <label for="karts" class="details">Hmotný i nehmo. majetek:</label>
+                                <input type="text" id="karts" placeholder="Počet Inv. karet" name="Property_cards" required></div>
 
 
                             <div class="input-box">
-                                <label for="zaměstnanci" class="details">Počet zaměstnanců:</label>
-                                <input type="text" id="zaměstnanci" placeholder="Počet zaměstnanců" name="Employe" required></div>
+                                <label for="employes" class="details">Počet zaměstnanců:</label>
+                                <input type="text" id="employes" placeholder="Počet zaměstnanců" name="Employe" required></div>
 
 
 
@@ -215,18 +172,18 @@ require_once(__DIR__."/auth/check_cookie.php");
                         <div class="selects">
                             <div class="select1">
                                 <label for="zájem" class="selectInfo" required>Mám zájem o</label>
-                                <select name="Interest" id="zajem" class="SO" >
+                                <select name="Interest" id="zajem" class="SO" required >
                                     <option value="">Vyberte</option>
-                                    <option value="">Podvojné účetnictví</option>
-                                    <option value="">Daňová evidence</option>
-                                    <option value="">Mzdová a personální agenda</option>
+                                    <option value="Podvojné účetnictví">Podvojné účetnictví</option>
+                                    <option value="Daňová Evidence">Daňová evidence</option>
+                                    <option value="Mzdová a personální agenda">Mzdová a personální agenda</option>
                                 </select></div>
 
 
                             <div class="select2">
                                 <label for="DPH" class="selectInfo" required>Jste plátce DPH?</label>     
-                                <select name="TaxPay" id="DPH" class="SO" >
-                                    <option value="vyberte" class="vyberte">Vyberte</option>
+                                <select name="TaxPay" id="DPH" class="SO" required>
+                                    <option value="">Vyberte</option>
                                     <option value="Ne">Ne, nejsem</option>
                                     <option value="Ano, měsíční">Ano, měsíční</option>
                                     <option value="Ano, čtvrtletní">Ano, čtvrtletní</option>
@@ -239,53 +196,51 @@ require_once(__DIR__."/auth/check_cookie.php");
                         <div class="textarea">
                                 <label for="informace" class="doplnInfo">Doplňující Informace</label>
                                 <textarea  class="textA" name="Info" id="informace" cols="20" rows="10"></textarea>
-                                <input onclick="validateForm(this.parentNode.parentNode.parentNode)" name="submit" type="submit" class="sub">
+                                <input onclick="validateForm(this.parentNode.parentNode)" name="submit" type="submit" class="sub">
                         </div>
                     </form>
                     
             </div>
-        </div>       
-            <div class="comments">
-                <form action="./auth/check_comments.php" method="POST">
-                <textarea name="komenty" id="" cols="30" rows="10"></textarea>
-                <input type="submit" name="submit" value="Odeslat komentář">
-                </form>
-            </div>    
+    
 
     </main>
     <footer>
-        <div class="contact" id="kontakt">
-            
-            <div class="kontakty">
-                <div class="adressa"> Rybáře 210/24 Tvrdonice 691 53
-                <span class="material-icons"><img src="./img/ikona_lokace.png" alt="">
-                    </span></div>
-                <div class="ico">IČO: cz52484364856413
-                    <span class="material-icons">
-                        <img src="./img/ikona_ico.png" alt="">
-                        </span>
-                </div>
-                <div class="telefon">+420 555 777 888
-                    <span class="material-icons">
-                        <img src="./img/ikona_telefon.png" alt="">
-                        </span>
-                </div>
-                <div class="email">marcelasalajkova@ucto.cz
+        <div class=" container">
 
-                    <span class="material-icons">
-                        <img src="./img/ikona_email.png" alt="">
-                        </span>     
 
-                </div>
-                <div class="datovka">Identifikátor datovky: 542348
-                    <span class="material-icons">
-                        <img src="./img/ikona_klic.png" alt="">
-                        </span>  
-                       
+            <div class="contact" id="kontakt">
                 
+                <div class="kontakty">
+                    <div class="adressa"> Rybáře 210/24 Tvrdonice 691 53
+                    <span class="material-icons"><img src="./img/ikona_lokace.png" alt="">
+                        </span></div>
+                    <div class="ico">IČO: cz52484364856413
+                        <span class="material-icons">
+                            <img src="./img/ikona_ico.png" alt="">
+                            </span>
+                    </div>
+                    <div class="telefon">+420 555 777 888
+                        <span class="material-icons">
+                            <img src="./img/ikona_telefon.png" alt="">
+                            </span>
+                    </div>
+                    <div class="email">marcelasalajkova@ucto.cz
+    
+                        <span class="material-icons">
+                            <img src="./img/ikona_email.png" alt="">
+                            </span>     
+    
+                    </div>
+                    <div class="datovka">Identifikátor datovky: 542348
+                        <span class="material-icons">
+                            <img src="./img/ikona_klic.png" alt="">
+                            </span>  
+                           
+                    
+                </div>
+    
+    
             </div>
-
-
         </div>
 
     </footer>

@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/nav.css">
-    <title>Nav</title>
+    <link rel="stylesheet" href="../css/styly.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <!-- <link rel="stylesheet" href="../css//bootstrap/bootstrap.css"> -->
+    <!-- <script src="../css//js/bootstrap.js"></script> -->
+    <!-- <script src="../css//js/color-modes.js"></script> -->
+
+
+    <title>MS Daně</title>
 </head>
 <body>
 <header id="domu">
@@ -34,9 +40,5 @@
             <div class="ikonaMenu"><img src="./img/hamburgermenu.png" class="ikohamburger" alt=""></a></div>
         </nav>
 
-        
-    
 
     </header>
-</body>
-</html>

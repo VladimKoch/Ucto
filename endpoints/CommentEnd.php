@@ -12,7 +12,7 @@ if(isset($_POST["operation_type"]))
             $input = array("userId" => $_POST["userId"],
             "date_comment" => $_POST["date_comment"], 
             "comment_text" => $_POST["comment_text"]);
-            echo $commentRepo -> create($input);
+            echo $commentRepo -> insert($input);
         }
    
     }

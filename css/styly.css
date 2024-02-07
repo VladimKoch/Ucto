@@ -182,7 +182,7 @@ background: linear-gradient(90deg,rgb(40, 54, 218)0%,rgb(163, 45, 247)100%);
 
 .linie1{
 width: 1200px;
-height: 20%;
+
 border: #6b26d9 solid 1px;
 text-align: center;
 margin:0 auto;
@@ -196,7 +196,7 @@ display: none;
 display: flex;
 flex-direction: row;
 justify-content: left;
-height: 100%;
+height: 500px;
 width:100%;
 background: url("../img/architecture.jpg") fixed center;
 background-size: cover;
@@ -447,7 +447,7 @@ box-shadow: 0 0 10px rgb(118, 118, 118);
 
 .linie{
 width: 1200px;
-height: 20%;
+
 border: #6b26d9 solid 1px;
 text-align: center;
 margin:0 auto;
@@ -458,7 +458,8 @@ margin:0 auto;
 .containerSize{
 height: 750px;
 width: 100%;
-padding:70px
+padding:35px;
+
 
 }
 
@@ -956,9 +957,6 @@ margin-left: 65px;
 .textarea{
 width:300px;
 }
-
-
-
 
 
 

@@ -11,19 +11,19 @@ CREATE TABLE Users(
 );
 DROP TABLE IF EXISTS Responses;
 CREATE TABLE Responses(
-  id int NOT NULL ,
-  time_date datetime NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
+  time_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   full_name varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
-  phone_number varchar(255),
-  annual_turnover decimal,
-  property_cards int,
-  employe int,
-  documents int,
-  legal_form varchar(255),
-  scope_of_business varchar(255),
-  interest varchar(255),
-  tax_pay varchar(255),
+  phone_number varchar(255) NOT NULL,
+  annual_turnover decimal NOT NULL,
+  property_cards int NOT NULL,
+  employe int NOT NULL,
+  documents int NOT NULL,
+  legal_form varchar(255) NOT NULL,
+  scope_of_business varchar(255) NOT NULL,
+  interest varchar(255) NOT NULL,
+  tax_pay varchar(255) NOT NULL,
   inf varchar(1000)
   
   
